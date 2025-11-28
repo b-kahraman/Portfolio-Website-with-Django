@@ -28,6 +28,10 @@ The following software must be installed on your system to run the project:
 - pip (Python package manager)
 - virtualenv (recommended)
 - Git
+  
+> **Note:**  
+> Some systems use `python` instead of `python3`.  
+> If any command fails, try replacing `python3` with `python`.
 
 ## 🔧 Installation
 
@@ -42,7 +46,7 @@ cd Portfolio-Website-with-Django
 
 **Windows:**
 ```bash
-python -m venv venv
+python3 -m venv venv
 venv\Scripts\activate
 ```
 
@@ -63,10 +67,9 @@ pip install -r requirements.txt
 The SQLite database will be created automatically when you run migrations:
 
 ```bash
-python manage.py makemigrations
-python manage.py migrate
+python3 manage.py makemigrations
+python3 manage.py migrate
 ```
-
 **Note:** The `db.sqlite3` file is automatically generated and should not be committed to version control. Make sure it's listed in your `.gitignore` file.
 
 ### 5. Create Superuser
@@ -74,21 +77,53 @@ python manage.py migrate
 Create a superuser account to access the admin panel:
 
 ```bash
-python manage.py createsuperuser
+python3 manage.py createsuperuser
 ```
-
 Enter your username, email, and password when prompted.
 
 ### 6. Collect Static Files
 
 ```bash
-python manage.py collectstatic
+python3 manage.py collectstatic
 ```
 
 ### 7. Start Development Server
 
 ```bash
-python manage.py runserver
+python3 manage.py runserver
+```
+
+### Environment Variables
+
+You must create a `.env` file in the project root.  
+The project will not work without this file.
+
+Use the template below as a starting point.  
+Replace the placeholder values with your own credentials.
+
+```env
+# Django Secret Key → MUST be changed!
+SECRET_KEY=replace_this_with_a_real_secret_key
+# Generate a secure one:
+# python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+
+# Development mode
+IS_DEV=True
+
+# Local development
+APP_HOST=127.0.0.1
+
+# ───────────────────────────────
+# Gmail SMTP Configuration
+# ───────────────────────────────
+HOST_USER=your-email@gmail.com
+HOST_PASS=your-16-digit-gmail-app-password
+
+# How to get HOST_PASS:
+# 1. Enable 2-Factor Authentication on your Google account
+# 2. Go to → https://myaccount.google.com/apppasswords
+# 3. Create an app password (select "Mail" and your device)
+# 4. Copy the 16-digit password (ignore spaces) and paste here
 ```
 
 Visit `http://127.0.0.1:8000` in your browser to view your site.
@@ -151,33 +186,7 @@ Portfolio-Website-with-Django/
 │   └── images/           # Images
 │
 ├── requirements.txt       # Python dependencies
-└── manage.py             # Django management script
+├── manage.py             # Django management script
+└── .env                  # Create .env
 ```
-### Environment Variables
 
-Create a `.env` file for sensitive settings (never commit this file):
-
-```env
-# Django Secret Key → MUST be changed!
-SECRET_KEY=replace_this_with_a_real_secret_key
-# Generate a secure one:
-# python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
-
-# Development mode
-IS_DEV=True
-
-# Local development
-APP_HOST=127.0.0.1
-
-# ───────────────────────────────
-# Gmail SMTP Configuration
-# ───────────────────────────────
-HOST_USER=your-email@gmail.com
-HOST_PASS=your-16-digit-gmail-app-password
-
-# How to get HOST_PASS:
-# 1. Enable 2-Factor Authentication on your Google account
-# 2. Go to → https://myaccount.google.com/apppasswords
-# 3. Create an app password (select "Mail" and your device)
-# 4. Copy the 16-digit password (ignore spaces) and paste here
-```
