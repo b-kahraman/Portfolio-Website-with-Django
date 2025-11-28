@@ -87,13 +87,7 @@ Enter your username, email, and password when prompted.
 python3 manage.py collectstatic
 ```
 
-### 7. Start Development Server
-
-```bash
-python3 manage.py runserver
-```
-
-### Environment Variables
+### 7. Environment Variables
 
 You must create a `.env` file in the project root.  
 The project will not work without this file.
@@ -126,6 +120,11 @@ HOST_PASS=your-16-digit-gmail-app-password
 # 4. Copy the 16-digit password (ignore spaces) and paste here
 ```
 
+### 8. Start Development Server
+
+```bash
+python3 manage.py runserver
+```
 Visit `http://127.0.0.1:8000` in your browser to view your site.
 
 ## 👨‍💼 Admin Panel Usage
@@ -187,6 +186,6 @@ Portfolio-Website-with-Django/
 │
 ├── requirements.txt       # Python dependencies
 ├── manage.py             # Django management script
-└── .env                  # Create .env
+└── .env                  # !! Create .env !!
 ```
 
