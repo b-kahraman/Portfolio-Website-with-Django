@@ -1,2 +1,183 @@
-# Portfolio-Website-with-Django
+# 🚀 Portfolio Website with Django
+
 A modern and dynamic personal portfolio website built with Django framework. Features a fully responsive design and easy content management through the Django admin panel - a professional portfolio solution that showcases both your projects and your Django development skills.
+
+## ✨ Features
+
+### 🎯 Core Features
+- **Dynamic Content Management**: All content managed through Django admin panel
+- **Project Showcase**: Display your projects with visuals and detailed descriptions
+- **Responsive Design**: Perfect appearance across all devices
+- **Working Contact Form**: Connect with visitors through a functional contact form
+- **About Section**: Share your story, skills, and experience
+- **SEO Friendly**: Optimized structure for search engines
+
+### 🛠️ Technical Features
+- Django framework
+- SQLite database (easily switchable to PostgreSQL for production)
+- Responsive frontend with Bootstrap
+- Django Admin panel integration
+- Form validation and security measures
+- Static and media file management
+
+## 📋 Requirements
+
+The following software must be installed on your system to run the project:
+
+- Python 3.8 or higher
+- pip (Python package manager)
+- virtualenv (recommended)
+- Git
+
+## 🔧 Installation
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/bkahraman-python/Portfolio-Website-with-Django.git
+cd Portfolio-Website-with-Django
+```
+
+### 2. Create Virtual Environment
+
+**Windows:**
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+**macOS/Linux:**
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### 3. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Set Up Database
+
+The SQLite database will be created automatically when you run migrations:
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+**Note:** The `db.sqlite3` file is automatically generated and should not be committed to version control. Make sure it's listed in your `.gitignore` file.
+
+### 5. Create Superuser
+
+Create a superuser account to access the admin panel:
+
+```bash
+python manage.py createsuperuser
+```
+
+Enter your username, email, and password when prompted.
+
+### 6. Collect Static Files
+
+```bash
+python manage.py collectstatic
+```
+
+### 7. Start Development Server
+
+```bash
+python manage.py runserver
+```
+
+Visit `http://127.0.0.1:8000` in your browser to view your site.
+
+## 👨‍💼 Admin Panel Usage
+
+### Accessing the Admin Panel
+
+1. Navigate to `http://127.0.0.1:8000/admin` in your browser
+2. Log in with your superuser credentials
+
+### Content Management
+
+From the admin panel, you can manage the following content:
+
+- **Projects**: Add, edit, or delete projects
+  - Project name and description
+  - Project images
+  - Technologies used
+  - Project link and GitHub repository
+  
+- **About**: Update your personal information
+  - Biography
+  - Skills
+  - Experience
+  - CV/Resume
+  
+- **Contact Messages**: View messages from visitors
+  - Message details
+  - Sender information
+  - Date and time
+
+## 📁 Project Structure
+
+```
+Portfolio-Website-with-Django/
+│
+├── portfolio/              # Main project directory
+│   ├── settings.py        # Django settings
+│   ├── urls.py            # Main URL configuration
+│   └── wsgi.py            # WSGI configuration
+│
+├── main/                  # Main application
+│   ├── models.py          # Database models
+│   ├── views.py           # View functions
+│   ├── urls.py            # Application URLs
+│   ├── forms.py           # Form classes
+│   └── admin.py           # Admin panel configuration
+│
+├── templates/             # HTML templates
+│   ├── base.html          # Base template
+│   ├── home.html          # Home page
+│   ├── projects.html      # Projects page
+│   ├── about.html         # About page
+│   └── contact.html       # Contact page
+│
+├── static/                # Static files
+│   ├── css/              # CSS files
+│   ├── js/               # JavaScript files
+│   └── images/           # Images
+│
+├── requirements.txt       # Python dependencies
+└── manage.py             # Django management script
+```
+### Environment Variables
+
+Create a `.env` file for sensitive settings (never commit this file):
+
+```env
+# Django Secret Key → MUST be changed!
+SECRET_KEY=replace_this_with_a_real_secret_key
+# Generate a secure one:
+# python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+
+# Development mode
+IS_DEV=True
+
+# Local development
+APP_HOST=127.0.0.1
+
+# ───────────────────────────────
+# Gmail SMTP Configuration
+# ───────────────────────────────
+HOST_USER=your-email@gmail.com
+HOST_PASS=your-16-digit-gmail-app-password
+
+# How to get HOST_PASS:
+# 1. Enable 2-Factor Authentication on your Google account
+# 2. Go to → https://myaccount.google.com/apppasswords
+# 3. Create an app password (select "Mail" and your device)
+# 4. Copy the 16-digit password (ignore spaces) and paste here
+```
