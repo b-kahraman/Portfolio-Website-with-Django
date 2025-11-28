@@ -1,0 +1,104 @@
+{% load static %}
+{% load i18n %}
+{% get_current_language as CURRENT_LANGUAGE %}
+
+<!DOCTYPE html>
+<html lang="{{ CURRENT_LANGUAGE }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Portfolio Site V1{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    {% block extracss %}
+    {% endblock %}
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <a href="{% url 'index' %}" class="navbar-brand mx-auto mx-lg-0">BK</a>
+
+            <div class="d-flex align-items-center d-lg-none">
+
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-lg-5">
+                    <li class="nav-item"><a class="nav-link click-scroll" href="#section_1">{% translate 'Home' %}</a></li>
+                    <li class="nav-item"><a class="nav-link click-scroll" href="#section_2">{% translate 'About' %}</a></li>
+                    <li class="nav-item"><a class="nav-link click-scroll" href="#section_3">{% translate 'Projects' %}</a></li>
+                    <li class="nav-item"><a class="nav-link click-scroll" href="#section_4">{% translate 'Contact' %}</a></li>
+                </ul>
+
+                
+                <div class="d-lg-flex align-items-center d-none ms-auto">
+                    
+                    {% if CURRENT_LANGUAGE == 'tr' %}
+                        
+                        {% with target_language='en' target_code='EN' target_flag='gb.png' %}
+                            <a href="/{{ target_language }}{{ request.path|slice:'3:' }}" class="language-switcher d-flex align-items-center text-decoration-none">
+                                <img 
+                                    src="{% static 'images/'|add:target_flag %}" 
+                                    alt="English Language" 
+                                    class="me-3 flag-icon" 
+                                    style="width: 24px; height: 24px; cursor: pointer; object-fit: cover;"
+                                >
+                                <span class="custom-btn btn custom-link">{{ target_code }}</span>
+                            </a>
+                        {% endwith %}
+
+                    {% else %}
+                        
+                        {% with target_language='tr' target_code='TR' target_flag='tr.png' %}
+                            <a href="/{{ target_language }}{{ request.path|slice:'3:' }}" class="language-switcher d-flex align-items-center text-decoration-none">
+                                <img 
+                                    src="{% static 'images/'|add:target_flag %}" 
+                                    alt="Turkish Language" 
+                                    class="me-3 flag-icon" 
+                                    style="width: 24px; height: 24px; cursor: pointer; object-fit: cover;"
+                                >
+                                <span class="custom-btn btn custom-link">{{ target_code }}</span>
+                            </a>
+                        {% endwith %}
+
+                    {% endif %}
+
+                </div>
+                
+            </div>
+
+        </div>
+    </nav>
+    {% block content %}{% endblock %}
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-12">
+                    <div class="copyright-text-wrap">
+                        <p class="mb-0">
+                            <span class="copyright-text">Copyright © 2025 <a href="https://github.com/bkahraman-python">bkahraman-python</a></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    {% block js_files %}
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/jquery.sticky.js' %}"></script>
+    <script src="{% static 'js/click-scroll.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/magnific-popup-options.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+    {% endblock %}
+
+</body>
+</html>
