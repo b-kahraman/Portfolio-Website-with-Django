@@ -140,7 +140,6 @@ From the admin panel, you can manage the following content:
 
 - **Projects**: Add, edit, or delete projects
   - Project name and description
-  - Project images
   - Technologies used
   - Project link and GitHub repository
   
@@ -148,8 +147,7 @@ From the admin panel, you can manage the following content:
   - Biography
   - Skills
   - Experience
-  - CV/Resume
-  
+   
 - **Contact Messages**: View messages from visitors
   - Message details
   - Sender information
