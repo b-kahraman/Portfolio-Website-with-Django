@@ -7,9 +7,11 @@ django-ckeditor==6.7.3
 django-ckeditor-5==0.2.18
 django-js-asset==3.1.2
 django-modeltranslation==0.19.17
+gunicorn==23.0.0
 humanfriendly==10.0
 idna==3.11
 npyscreen==4.10.5
+packaging==25.0
 pillow==12.0.0
 python-dotenv==1.2.1
 requests==2.32.5
